@@ -16,21 +16,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          path: material-gnome-theme
+          path: source
 
       - name: Build release zip
         run: |
-          mkdir -p Material-Gnome
+          mkdir -p flake-material-gtk
           rsync -a \
             --exclude='.git/' \
             --exclude='.github/' \
             --exclude='.gitignore' \
             --exclude='screenshots/' \
-            material-gnome-theme/ Material-Gnome/
-          zip -r Material-Gnome.zip Material-Gnome/
+            source/ flake-material-gtk/
+          zip -r flake-material-gtk.zip flake-material-gtk/
 
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
-          files: Material-Gnome.zip
+          files: flake-material-gtk.zip
           generate_release_notes: true

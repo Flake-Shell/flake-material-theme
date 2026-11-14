@@ -1,14 +1,10 @@
 # Merge these template entries into ~/.config/matugen/config.toml.
-# Adjust the theme directory if Material GNOME is installed elsewhere.
+# Adjust the theme directory if flake-material-gtk is installed elsewhere.
 
-[templates.material_gnome_gtk3]
-input_path = '~/.themes/Material-Gnome/gtk-3.0/colors-template.css'
-output_path = '~/.themes/Material-Gnome/gtk-3.0/colors.css'
+[templates.flake_material_gtk3]
+input_path = '~/.themes/flake-material-gtk/gtk-3.0/colors-template.css'
+output_path = '~/.themes/flake-material-gtk/gtk-3.0/colors.css'
 
-[templates.material_gnome_gtk4]
-input_path = '~/.themes/Material-Gnome/gtk-4.0/colors-template.css'
-output_path = '~/.themes/Material-Gnome/gtk-4.0/colors.css'
-
-[templates.material_gnome_shell]
-input_path = '~/.themes/Material-Gnome/gnome-shell/gnome-shell-template.css'
-output_path = '~/.themes/Material-Gnome/gnome-shell/gnome-shell.css'
+[templates.flake_material_gtk4]
+input_path = '~/.themes/flake-material-gtk/gtk-4.0/colors-template.css'
+output_path = '~/.themes/flake-material-gtk/gtk-4.0/colors.css'

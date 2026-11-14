@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render GTK3, GTK4, and GNOME Shell stylesheets from a theme JSON preset."""
+"""Render GTK3 and GTK4 stylesheets from a theme JSON preset."""
 
 from __future__ import annotations
 
@@ -65,7 +65,7 @@ def atomic_write(path: Path, content: str) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Apply one JSON preset to GTK3, GTK4, and GNOME Shell."
+        description="Apply one JSON preset to GTK3 and GTK4."
     )
     parser.add_argument(
         "preset", type=Path,
@@ -92,10 +92,6 @@ def main() -> int:
         outputs = (
             (ROOT / "gtk-3.0/colors-template.css", ROOT / "gtk-3.0/colors.css"),
             (ROOT / "gtk-4.0/colors-template.css", ROOT / "gtk-4.0/colors.css"),
-            (
-                ROOT / "gnome-shell/gnome-shell-template.css",
-                ROOT / "gnome-shell/gnome-shell.css",
-            ),
         )
         rendered_outputs = []
         for template_path, output_path in outputs:

@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=X-GNOME-Metatheme
-Name=Material-Gnome
+Name=flake-material-gtk
 Comment=A Material You/Material 3 Expressive Gtk+ theme based on Matugen color generator
 
 [X-GNOME-Metatheme]
-GtkTheme=Material-Gnome
+GtkTheme=flake-material-gtk
 ButtonLayout=close,minimize,maximize:menu
