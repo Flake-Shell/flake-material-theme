@@ -1,0 +1,5 @@
+flake-material-gtk (1.4.0) unstable; urgency=medium
+
+  * Initial Debian packaging.
+
+ -- CharOfString <root@charofstring.cc>  Fri, 13 Nov 2026 21:18:26 -0600

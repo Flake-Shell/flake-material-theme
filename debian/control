@@ -1,0 +1,25 @@
+Source: flake-material-gtk
+Section: x11
+Priority: optional
+Maintainer: CharOfString <root@charofstring.cc>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://github.com/Flake-Shell/material-gnome-theme
+Vcs-Browser: https://github.com/Flake-Shell/material-gnome-theme
+Vcs-Git: https://github.com/Flake-Shell/material-gnome-theme.git
+
+Package: flake-material-gtk
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Description: Material You inspired GTK3 and GTK4 theme
+ flake-material-gtk is a dark GTK theme inspired by Google's Material You
+ and Material 3 design languages, with deep container colors and
+ expressive active states.
+ .
+ The package installs the theme to /usr/share/themes/flake-material-gtk,
+ including the GTK3 and GTK4 stylesheets and a set of premade color presets.
+ GTK4/libadwaita applications only use the theme when its GTK4 stylesheets
+ are linked into the user's ~/.config/gtk-4.0 directory; GTK 4.16 or newer
+ is required for the GTK4 stylesheet.

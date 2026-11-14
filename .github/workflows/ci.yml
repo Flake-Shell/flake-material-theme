@@ -56,9 +56,40 @@ jobs:
             --exclude='.git/' \
             --exclude='.github/' \
             --exclude='.gitignore' \
+            --exclude='debian/' \
             --exclude='screenshots/' \
             ./ "$stage/flake-material-gtk/"
           (cd "$stage" && zip -qr flake-material-gtk.zip flake-material-gtk/)
           roots="$(unzip -Z1 "$stage/flake-material-gtk.zip" | cut -d/ -f1 | sort -u)"
           test "$roots" = "flake-material-gtk"
           unzip -Z1 "$stage/flake-material-gtk.zip" | grep -Fxq 'flake-material-gtk/index.theme'
+
+  debian-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Debian packaging tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends debhelper dpkg-dev lintian
+
+      - name: Build Debian package
+        run: dpkg-buildpackage -b -us -uc
+
+      - name: Check package contents
+        run: |
+          deb="$(ls ../flake-material-gtk_*_all.deb)"
+          contents="$RUNNER_TEMP/deb-contents.txt"
+          dpkg-deb -c "$deb" | tee "$contents"
+          grep -q './usr/share/themes/flake-material-gtk/index.theme$' "$contents"
+          grep -q './usr/share/themes/flake-material-gtk/gtk-3.0/gtk.css$' "$contents"
+          grep -q './usr/share/themes/flake-material-gtk/gtk-4.0/colors.css$' "$contents"
+          if grep -q 'gnome-shell' "$contents"; then
+            echo 'Package must not contain GNOME Shell files' >&2
+            exit 1
+          fi
+
+      - name: Run lintian
+        run: lintian --fail-on error --info ../flake-material-gtk_*_all.deb
